@@ -4,12 +4,19 @@
   "description": "An eshop application done in MERN",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server"
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "yarn --cwd ./frontend start",
+    "dev": "concurrently \"yarn run server\" \"yarn run client\""
   },
   "repository": "git@github.com:AlexAnthopoulos/e-shop.git",
   "author": "AlexAnthopoulos <alex.anthopoulos01@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4"
   }
 }
