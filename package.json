@@ -8,7 +8,9 @@
     "start": "node backend/server",
     "server": "nodemon backend/server",
     "client": "yarn --cwd ./frontend start",
-    "dev": "concurrently \"yarn run server\" \"yarn run client\""
+    "dev": "concurrently \"yarn run server\" \"yarn run client\"",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d"
   },
   "repository": "git@github.com:AlexAnthopoulos/e-shop.git",
   "author": "AlexAnthopoulos <alex.anthopoulos01@gmail.com>",
