@@ -17,10 +17,12 @@ import { listProductDetails } from "../actions/productActions";
 
 const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1);
+
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
+
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match]);
@@ -65,22 +67,22 @@ const ProductScreen = ({ history, match }) => {
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <Row>
-                    <Col>Price</Col>
+                    <Col>Price:</Col>
                     <Col>
-                      <strong>€{product.price}</strong>
+                      <strong>${product.price}</strong>
                     </Col>
                   </Row>
                 </ListGroup.Item>
+
                 <ListGroup.Item>
                   <Row>
                     <Col>Status:</Col>
                     <Col>
-                      <strong>
-                        {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
-                      </strong>
+                      {product.countInStock > 0 ? "In Stock" : "Out Of Stock"}
                     </Col>
                   </Row>
                 </ListGroup.Item>
+
                 {product.countInStock > 0 && (
                   <ListGroup.Item>
                     <Row>
@@ -101,6 +103,7 @@ const ProductScreen = ({ history, match }) => {
                     </Row>
                   </ListGroup.Item>
                 )}
+
                 <ListGroup.Item>
                   <Button
                     onClick={addToCartHandler}
@@ -108,7 +111,7 @@ const ProductScreen = ({ history, match }) => {
                     type="button"
                     disabled={product.countInStock === 0}
                   >
-                    Add to Cart
+                    Add To Cart
                   </Button>
                 </ListGroup.Item>
               </ListGroup>
