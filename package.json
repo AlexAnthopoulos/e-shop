@@ -1,19 +1,19 @@
 {
-  "name": "Eshop",
+  "name": "proshop",
   "version": "1.0.0",
-  "description": "An eshop application done in MERN",
+  "description": "MERN shopping cart app",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
-    "client": "yarn --cwd ./frontend start",
-    "dev": "concurrently \"yarn run server\" \"yarn run client\"",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
-    "data:destroy": "node backend/seeder -d"
+    "data:destroy": "node backend/seeder -d",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
-  "repository": "git@github.com:AlexAnthopoulos/e-shop.git",
-  "author": "AlexAnthopoulos <alex.anthopoulos01@gmail.com>",
+  "author": "Alex Anthopoulos",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -22,7 +22,9 @@
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.8"
+    "mongoose": "^5.10.6",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
